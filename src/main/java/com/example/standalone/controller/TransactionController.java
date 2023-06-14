@@ -1,9 +1,12 @@
 package com.example.standalone.controller;
 
+import com.example.standalone.events.AType;
 import com.example.standalone.events.TEvent;
+import com.example.standalone.events.TType;
 import com.example.standalone.exceptions.AccountDoesNotExistError;
 import com.example.standalone.exceptions.InsufficientBalanceException;
 import com.example.standalone.kafka.KafkaProducer;
+import com.example.standalone.models.Account;
 import com.example.standalone.models.Transaction;
 import com.example.standalone.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +41,7 @@ public class TransactionController {
             return new ResponseEntity<>(transaction, HttpStatus.BAD_REQUEST);
         } catch (InsufficientBalanceException e) {
             kafkaProducer.sendTransactionEvent(transaction, TEvent.INSUFFICIENT_BALANCE);
+            kafkaProducer.sendAccountEvent(transaction.getFromAccount(), AType.INSUFFICIENT_BALANCE);
             return new ResponseEntity<>(transaction, HttpStatus.BAD_REQUEST);
         }
     }

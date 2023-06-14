@@ -28,12 +28,12 @@ public class KafkaProducer {
     @Autowired
     KafkaTemplate<String, Object> kafkaTemplate;
 
-    public void createAccountEvent(@Valid Account account){
+    public void sendAccountEvent(Long accNum, AType status){
         AccountStreamPayload event = new AccountStreamPayload();
-        event.setType(AType.CREATE.toString());
+        event.setType(status.toString());
         event.setTimestamp(LocalDateTime.now().toString());
-        kafkaTemplate.send("account-events", event);
-        LOGGER.info("account event sent to account-events");
+        kafkaTemplate.send("account-events." + accNum, event);
+        LOGGER.info("account event sent to account-events." + accNum);
     }
 
     public void transAccountEvent(int amount, Long toId, Long fromId) {
@@ -44,13 +44,13 @@ public class KafkaProducer {
         event.setAmount(amount);
         event.setType(TType.CREDIT.toString());
 
-        kafkaTemplate.send("account-events", event);
+        kafkaTemplate.send("account-events." + event.getId(), event);
         LOGGER.info(event.getId() + " : " + event.getType() + " : " + event.getAmount());
 
         event.setId(fromId);
         event.setType(TType.DEBIT.toString());
 
-        kafkaTemplate.send("account-events", event);
+        kafkaTemplate.send("account-events." + event.getId(), event);
         LOGGER.info(event.getId() + " : " + event.getType() + " : " + event.getAmount());
 
     }

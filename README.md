@@ -1,7 +1,7 @@
 # pocIDFC
 A Proof-Of-Concept microservice to log and commit all customer side events - such as account creation and transaction journeys using Apache Kafka and SpringBoot
 
-All atomic events are logged using Kafka topics `account-events` and `transaction-events` and every committed event is persisted in a local SQL instance.
+All atomic events are logged using Kafka topics `account-events.{accountNum}` (dynamically generated topic) and `transaction-events` and every committed event is persisted in a local SQL instance.
 
 
 ## Models
@@ -15,10 +15,12 @@ All atomic events are logged using Kafka topics `account-events` and `transactio
 - [x] Transaction SUCCESS
 - [x] Transaction INSUFFICIENT_BALANCE
 - [x] Transaction ACCOUNT_NON_EXISTENT
+- [ ] RED_FLAG
 
 ## Services
 - [x] Kafka Producer 
 - [x] Transactions & Accounts
+- [ ] Fraudulent Activity 
 
 ## Endpoints
 - [x] /accounts/post
@@ -27,6 +29,9 @@ All atomic events are logged using Kafka topics `account-events` and `transactio
 
 - [x] /transactions/post
 - [x] /transactions/getAll
+
+
+- [ ] /alerts/red
 
 ## Data Flow
 todo

@@ -1,5 +1,8 @@
 package com.example.standalone.controller;
 
+import com.example.standalone.events.AType;
+import com.example.standalone.exceptions.AccountDoesNotExistError;
+import com.example.standalone.kafka.KafkaProducer;
 import com.example.standalone.models.Account;
 import com.example.standalone.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,9 @@ public class AccountController {
     @Autowired
     AccountService accountService;
 
+    @Autowired
+    KafkaProducer kafkaProducer;
+
     @GetMapping(value = "/ok", produces = "application/text")
     public ResponseEntity<String> ok(){
         return new ResponseEntity<>("OK", HttpStatus.OK);
@@ -30,6 +36,14 @@ public class AccountController {
     @PostMapping(value = "/test")
     public ResponseEntity<Account> test(@Valid @RequestBody Account account) {
         Account saved = accountService.save(account);
+        kafkaProducer.sendAccountEvent(saved.getAccNum(), AType.CREATE);
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/update/{id}", produces = "application/json")
+    public ResponseEntity<Account> update(@Valid @RequestBody Account account, @PathVariable Long id) throws AccountDoesNotExistError {
+        Account acc = accountService.updateById(account, id);
+        kafkaProducer.sendAccountEvent(acc.getAccNum(), AType.UPDATE);
+        return new ResponseEntity<>(acc, HttpStatus.OK);
     }
 }

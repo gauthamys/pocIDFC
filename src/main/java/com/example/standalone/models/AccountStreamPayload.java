@@ -1,6 +1,5 @@
 package com.example.standalone.models;
 
-import com.example.standalone.events.AType;
 import lombok.Data;
 
 @Data

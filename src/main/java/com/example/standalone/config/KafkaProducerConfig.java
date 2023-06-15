@@ -1,4 +1,4 @@
-package com.example.antLogging.config;
+package com.example.standalone.config;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;

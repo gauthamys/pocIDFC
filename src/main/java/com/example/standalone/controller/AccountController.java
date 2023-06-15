@@ -1,10 +1,10 @@
-package com.example.antLogging.controller;
+package com.example.standalone.controller;
 
-import com.example.antLogging.events.AType;
-import com.example.antLogging.exceptions.AccountDoesNotExistError;
-import com.example.antLogging.kafka.KafkaProducer;
-import com.example.antLogging.models.Account;
-import com.example.antLogging.service.AccountService;
+import com.example.standalone.events.AType;
+import com.example.standalone.exceptions.AccountDoesNotExistError;
+import com.example.standalone.kafka.KafkaProducer;
+import com.example.standalone.models.Account;
+import com.example.standalone.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

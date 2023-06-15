@@ -1,4 +1,4 @@
-package com.example.antLogging.events;
+package com.example.standalone.events;
 
 public enum TEvent {
     SUCCESS,

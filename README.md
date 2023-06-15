@@ -4,6 +4,9 @@ A Proof-Of-Concept microservice to log and commit all customer side events - suc
 All atomic events are logged using Kafka topics `account-events.{accountNum}` (dynamically generated topic) and `transaction-events` and every committed event is persisted in a local SQL instance.
 
 
+AntLogging - Account 'N Transaction Logging
+
+
 ## Models
 - [x] Accounts
 - [x] Transactions

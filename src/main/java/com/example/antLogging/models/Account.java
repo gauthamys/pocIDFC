@@ -1,12 +1,10 @@
-package com.example.standalone.models;
+package com.example.antLogging.models;
 
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "accounts")

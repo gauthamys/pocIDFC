@@ -1,14 +1,12 @@
-package com.example.standalone.controller;
+package com.example.antLogging.controller;
 
-import com.example.standalone.events.AType;
-import com.example.standalone.events.TEvent;
-import com.example.standalone.events.TType;
-import com.example.standalone.exceptions.AccountDoesNotExistError;
-import com.example.standalone.exceptions.InsufficientBalanceException;
-import com.example.standalone.kafka.KafkaProducer;
-import com.example.standalone.models.Account;
-import com.example.standalone.models.Transaction;
-import com.example.standalone.service.TransactionService;
+import com.example.antLogging.events.AType;
+import com.example.antLogging.events.TEvent;
+import com.example.antLogging.exceptions.AccountDoesNotExistError;
+import com.example.antLogging.exceptions.InsufficientBalanceException;
+import com.example.antLogging.kafka.KafkaProducer;
+import com.example.antLogging.models.Transaction;
+import com.example.antLogging.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +29,7 @@ public class TransactionController {
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
-    @PostMapping(value = "/test", produces = "application/json")
+    @PostMapping(value = "/post", produces = "application/json")
     public ResponseEntity<Transaction> send(@Valid @RequestBody Transaction transaction) throws AccountDoesNotExistError {
         try {
             Transaction t = transactionService.save(transaction);

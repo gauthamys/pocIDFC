@@ -1,13 +1,13 @@
-package com.example.standalone;
+package com.example.antLogging;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StandaloneApplication {
+public class AntLoggingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(StandaloneApplication.class, args);
+		SpringApplication.run(AntLoggingApplication.class, args);
 	}
 
 }

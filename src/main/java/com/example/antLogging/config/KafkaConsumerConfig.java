@@ -1,7 +1,7 @@
-package com.example.standalone.config;
+package com.example.antLogging.config;
 
-import com.example.standalone.models.AccountStreamPayload;
-import com.example.standalone.models.TransactionStreamPayload;
+import com.example.antLogging.models.AccountStreamPayload;
+import com.example.antLogging.models.TransactionStreamPayload;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;

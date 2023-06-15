@@ -1,4 +1,4 @@
-package com.example.standalone.exceptions;
+package com.example.antLogging.exceptions;
 
 public class AccountDoesNotExistError extends Exception {
     public AccountDoesNotExistError(String message){

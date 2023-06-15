@@ -1,6 +1,6 @@
-package com.example.standalone.repository;
+package com.example.antLogging.repository;
 
-import com.example.standalone.models.Account;
+import com.example.antLogging.models.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

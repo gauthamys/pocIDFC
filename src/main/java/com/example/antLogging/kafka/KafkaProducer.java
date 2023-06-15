@@ -1,13 +1,11 @@
-package com.example.standalone.kafka;
+package com.example.antLogging.kafka;
 
-import com.example.standalone.StandaloneApplication;
-import com.example.standalone.events.AType;
-import com.example.standalone.events.TEvent;
-import com.example.standalone.events.TType;
-import com.example.standalone.models.Account;
-import com.example.standalone.models.AccountStreamPayload;
-import com.example.standalone.models.Transaction;
-import com.example.standalone.models.TransactionStreamPayload;
+import com.example.antLogging.events.AType;
+import com.example.antLogging.events.TEvent;
+import com.example.antLogging.events.TType;
+import com.example.antLogging.models.AccountStreamPayload;
+import com.example.antLogging.models.Transaction;
+import com.example.antLogging.models.TransactionStreamPayload;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -15,7 +13,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
-import org.slf4j.LoggerFactory;
+
 import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.example.standalone.config;
+package com.example.antLogging.config;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;

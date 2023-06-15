@@ -1,11 +1,10 @@
-package com.example.standalone.models;
+package com.example.antLogging.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Data

@@ -1,13 +1,12 @@
-package com.example.standalone.service;
+package com.example.antLogging.service;
 
-import com.example.standalone.events.TEvent;
-import com.example.standalone.events.TType;
-import com.example.standalone.exceptions.AccountDoesNotExistError;
-import com.example.standalone.exceptions.InsufficientBalanceException;
-import com.example.standalone.kafka.KafkaProducer;
-import com.example.standalone.models.Account;
-import com.example.standalone.models.Transaction;
-import com.example.standalone.repository.TransactionRepository;
+import com.example.antLogging.events.TEvent;
+import com.example.antLogging.events.TType;
+import com.example.antLogging.exceptions.AccountDoesNotExistError;
+import com.example.antLogging.exceptions.InsufficientBalanceException;
+import com.example.antLogging.kafka.KafkaProducer;
+import com.example.antLogging.models.Transaction;
+import com.example.antLogging.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

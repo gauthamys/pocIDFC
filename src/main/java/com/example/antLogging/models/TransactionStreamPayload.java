@@ -1,4 +1,4 @@
-package com.example.standalone.models;
+package com.example.antLogging.models;
 
 import lombok.Data;
 

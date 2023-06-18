@@ -15,15 +15,15 @@ AntLogging - Account 'N Transaction Logging
 
 ## Event Types
 - [x] Account CREATE
+- [x] Account DEPOSIT
+- [x] Account INSUFFICIENT_BALANCE
 - [x] Transaction SUCCESS
 - [x] Transaction INSUFFICIENT_BALANCE
 - [x] Transaction ACCOUNT_NON_EXISTENT
-- [ ] RED_FLAG
 
 ## Services
 - [x] Kafka Producer 
 - [x] Transactions & Accounts
-- [ ] Fraudulent Activity 
 
 ## Endpoints
 - [x] /accounts/post
@@ -34,7 +34,6 @@ AntLogging - Account 'N Transaction Logging
 - [x] /transactions/getAll
 
 
-- [ ] /alerts/red
-
 ## Data Flow
-todo
+![WhatsApp Image 2023-06-18 at 11 57 32 PM](https://github.com/gauthamys/pocIDFC/assets/66833388/f8cec5f5-7493-4b9f-8b97-1155394a3f73)
+

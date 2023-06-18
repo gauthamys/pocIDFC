@@ -26,7 +26,7 @@ public class KafkaProducer {
     @Autowired
     KafkaTemplate<String, Object> kafkaTemplate;
 
-    public void sendAccountEvent(Long accNum, AType status){
+    public void sendAccountEvent(Long accNum, AType status, int amount){
         AccountStreamPayload event = new AccountStreamPayload();
         event.setType(status.toString());
         event.setTimestamp(LocalDateTime.now().toString());

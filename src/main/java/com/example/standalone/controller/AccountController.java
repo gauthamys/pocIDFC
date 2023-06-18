@@ -39,20 +39,21 @@ public class AccountController {
     @PostMapping(value = "/post", produces = "application/json")
     public ResponseEntity<Account> test(@Valid @RequestBody Account account) {
         Account saved = accountService.save(account);
-        kafkaProducer.sendAccountEvent(saved.getAccNum(), AType.CREATE);
+        kafkaProducer.sendAccountEvent(saved.getAccNum(), AType.CREATE, saved.getBalance());
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/update/{id}", produces = "application/json")
     public ResponseEntity<Account> update(@Valid @RequestBody Account account, @PathVariable Long id) throws AccountDoesNotExistError {
         Account acc = accountService.updateById(account, id);
-        kafkaProducer.sendAccountEvent(acc.getAccNum(), AType.UPDATE);
+        kafkaProducer.sendAccountEvent(acc.getAccNum(), AType.UPDATE, account.getBalance());
         return new ResponseEntity<>(acc, HttpStatus.OK);
     }
 
     @PostMapping(value = "/deposit", produces = "application/json")
     public ResponseEntity<String> deposit(@Valid @RequestBody DepositPayload depositPayload) throws InsufficientBalanceException, AccountDoesNotExistError {
         accountService.updateBalance(TType.CREDIT, depositPayload.getAmount(), depositPayload.getId());
+        kafkaProducer.sendAccountEvent(depositPayload.getId(), AType.DEPOSIT, depositPayload.getAmount());
         return new ResponseEntity<>("Succesfully added " + depositPayload.getAmount() + "to account " + depositPayload.getId(), HttpStatus.OK);
     }
 }

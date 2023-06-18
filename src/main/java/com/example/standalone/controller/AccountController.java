@@ -1,9 +1,12 @@
 package com.example.standalone.controller;
 
 import com.example.standalone.events.AType;
+import com.example.standalone.events.TType;
 import com.example.standalone.exceptions.AccountDoesNotExistError;
+import com.example.standalone.exceptions.InsufficientBalanceException;
 import com.example.standalone.kafka.KafkaProducer;
 import com.example.standalone.models.Account;
+import com.example.standalone.models.DepositPayload;
 import com.example.standalone.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,5 +48,11 @@ public class AccountController {
         Account acc = accountService.updateById(account, id);
         kafkaProducer.sendAccountEvent(acc.getAccNum(), AType.UPDATE);
         return new ResponseEntity<>(acc, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/deposit", produces = "application/json")
+    public ResponseEntity<String> deposit(@Valid @RequestBody DepositPayload depositPayload) throws InsufficientBalanceException, AccountDoesNotExistError {
+        accountService.updateBalance(TType.CREDIT, depositPayload.getAmount(), depositPayload.getId());
+        return new ResponseEntity<>("Succesfully added " + depositPayload.getAmount() + "to account " + depositPayload.getId(), HttpStatus.OK);
     }
 }

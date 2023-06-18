@@ -55,5 +55,6 @@ public class AccountService {
         } else {
           acc.setBalance(curBalance - amount);
         }
+        accountRepository.save(acc);
     }
 }
